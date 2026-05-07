@@ -1,0 +1,16 @@
+sql {
+  dialect = "mysql"
+  driver = "rlm_sql_mysql"
+
+  server = "127.0.0.1"
+  port = 3306
+  login = "portaluser"
+  password = "{{ db_pass | default('') }}"
+  radius_db = "radius"
+
+  read_clients = yes
+  client_table = "nas"
+
+  # The rest of the defaults are provided by FreeRADIUS package files.
+}
+

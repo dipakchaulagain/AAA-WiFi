@@ -1,0 +1,9 @@
+concurrent_login_limit {
+  if ("%{sql:SELECT COUNT(radacctid) FROM radacct \
+       WHERE AcctStopTime IS NULL \
+       AND UserName = '%{SQL-User-Name}'}" \
+      >= "%{%{Simultaneous-Use}:-{{ default_simultaneous_use }}}") {
+    reject
+  }
+}
+
