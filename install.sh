@@ -21,9 +21,9 @@ apt-get install -y \
 
 install -d -m 0755 /opt/portal
 
-# If running from a repo checkout, sync contents to /opt/portal
+# If running from a repo checkout, sync ./portal -> /opt/portal
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-rsync -a --delete "${SCRIPT_DIR}/" /opt/portal/ --exclude ".git" --exclude "node_modules"
+rsync -a --delete "${SCRIPT_DIR}/portal/" /opt/portal/ --exclude ".git" --exclude "node_modules"
 
 DB_PASS="${DB_PASS:-$(openssl rand -base64 24 | tr -d '\n')}"
 JWT_SECRET="${JWT_SECRET:-$(openssl rand -hex 32)}"
